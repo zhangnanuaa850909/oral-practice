@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>🌟 每日英语口语打卡 · 美音特训营</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --bg: #0f0f1a;
+  --card: #1a1a2e;
+  --card-hover: #1e1e35;
+  --accent: #f7b733;
+  --accent2: #fc5c7d;
+  --accent3: #6a82fb;
+  --green: #00e676;
+  --red: #ff5252;
+  --text: #e8e8f0;
+  --text-dim: #8888aa;
+  --border: #2a2a45;
+  --glass: rgba(255,255,255,0.04);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Animated background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(106,130,251,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(247,183,51,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(252,92,125,0.05) 0%, transparent 50%);
+  animation: bgFloat 20s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes bgFloat {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-2%, 1%); }
+  66% { transform: translate(1%, -2%); }
+}
+
+/* ========== NAVIGATION ========== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: rgba(15,15,26,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 0 16px;
+}
+
+.nav-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+.nav-title {
+  font-size: 16px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-tabs {
+  display: flex; gap: 4px;
+}
+
+.nav-tab {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-tab.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+}
+
+.nav-tab:hover:not(.active) {
+  color: var(--text);
+  background: var(--glass);
+}
+
+/* ========== MAIN ========== */
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 72px 16px 100px;
+}
+
+/* ========== HOME PAGE ========== */
+.streak-banner {
+  background: linear-gradient(135deg, rgba(247,183,51,0.15), rgba(252,92,125,0.1));
+  border: 1px solid rgba(247,183,51,0.2);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.streak-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(247,183,51,0.1) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.streak-fire { font-size: 48px; position: relative; z-index: 1; }
+.streak-count {
+  font-size: 42px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative; z-index: 1;
+}
+.streak-label {
+  font-size: 14px;
+  color: var(--text-dim);
+  position: relative; z-index: 1;
+  margin-top: 4px;
+}
+
+/* Stats row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--accent3);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Calendar */
+.calendar-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.cal-day.done {
+  background: linear-gradient(135deg, rgba(0,230,118,0.2), rgba(0,230,118,0.05));
+  border-color: rgba(0,230,118,0.3);
+  color: var(--green);
+}
+
+.cal-day.today {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(247,183,51,0.3);
+}
+
+.cal-day:hover {
+  transform: scale(1.1);
+}
+
+/* Day list */
+.day-list { display: flex; flex-direction: column; gap: 8px; }
+
+.day-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.day-card:hover {
+  background: var(--card-hover);
+  border-color: var(--accent3);
+  transform: translateX(4px);
+}
+
+.day-card.completed {
+  border-color: rgba(0,230,118,0.3);
+}
+
+.day-info { flex: 1; }
+
+.day-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent3);
+  margin-bottom: 2px;
+}
+
+.day-topic {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.day-progress {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  position: relative;
+}
+
+.day-progress svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 44px; height: 44px;
+  transform: rotate(-90deg);
+}
+
+.day-progress circle {
+  fill: none;
+  stroke-width: 3;
+}
+
+.day-progress .bg { stroke: var(--border); }
+.day-progress .fg {
+  stroke: var(--green);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s;
+}
+
+/* ========== PRACTICE PAGE ========== */
+.practice-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.practice-day-title {
+  font-size: 14px;
+  color: var(--accent3);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.practice-topic {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.section-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.section-btn {
+  padding: 8px 20px;
+  border-radius: 24px;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.section-btn.active {
+  border-color: var(--accent);
+  background: rgba(247,183,51,0.1);
+  color: var(--accent);
+}
+
+/* Sentence card */
+.sentence-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+}
+
+.sentence-card.correct {
+  border-color: rgba(0,230,118,0.4);
+  background: rgba(0,230,118,0.05);
+}
+
+.sentence-card.wrong {
+  border-color: rgba(255,82,82,0.4);
+  background: rgba(255,82,82,0.05);
+}
+
+.sentence-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent3), var(--accent2));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.sentence-en {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.sentence-cn {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.sentence-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--accent3);
+}
+
+.action-btn.listen {
+  border-color: rgba(106,130,251,0.4);
+  color: var(--accent3);
+}
+
+.action-btn.record {
+  border-color: rgba(252,92,125,0.4);
+  color: var(--accent2);
+}
+
+.action-btn.record.recording {
+  background: rgba(252,92,125,0.2);
+  animation: recordPulse 1s infinite;
+}
+
+@keyframes recordPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(252,92,125,0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(252,92,125,0); }
+}
+
+.action-btn.correct-mark { border-color: rgba(0,230,118,0.4); color: var(--green); }
+
+/* Recognition result */
+.recog-result {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  display: none;
+}
+
+.recog-result.show { display: block; }
+
+.recog-result.good {
+  background: rgba(0,230,118,0.08);
+  border: 1px solid rgba(0,230,118,0.2);
+}
+
+.recog-result.bad {
+  background: rgba(255,82,82,0.08);
+  border: 1px solid rgba(255,82,82,0.2);
+}
+
+.recog-text { color: var(--text); margin-bottom: 6px; }
+
+.recog-score {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.word-correct { color: var(--green); }
+.word-wrong { color: var(--red); text-decoration: underline; }
+
+/* Progress bar */
+.progress-bar-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.progress-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent3), var(--green));
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-text {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 50px;
+  text-align: right;
+}
+
+/* Complete overlay */
+.complete-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15,15,26,0.95);
+  backdrop-filter: blur(20px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.complete-overlay.show { display: flex; }
+
+.complete-content {
+  text-align: center;
+  padding: 40px;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.complete-emoji { font-size: 80px; margin-bottom: 16px; }
+.complete-title {
+  font-size: 28px; font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.complete-sub { color: var(--text-dim); font-size: 16px; margin-bottom: 24px; }
+
+.complete-stats {
+  display: flex; gap: 24px; justify-content: center; margin-bottom: 32px;
+}
+
+.complete-stat-val { font-size: 32px; font-weight: 900; color: var(--green); }
+.complete-stat-lbl { font-size: 12px; color: var(--text-dim); }
+
+.btn-primary {
+  padding: 14px 36px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 6px;
+}
+
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247,183,51,0.3); }
+
+.btn-secondary {
+  padding: 14px 36px;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 6px;
+}
+
+/* ========== WRONG PAGE ========== */
+.wrong-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.wrong-empty-icon { font-size: 64px; margin-bottom: 16px; }
+.wrong-empty-text { color: var(--text-dim); font-size: 16px; }
+
+/* ========== SPEED MODE ========== */
+.speed-card {
+  background: var(--card);
+  border: 2px solid var(--accent);
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.speed-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+}
+
+.speed-timer {
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.speed-sentence {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin: 16px 0 8px;
+  line-height: 1.5;
+}
+
+.speed-cn {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.speed-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.speed-stat { text-align: center; }
+.speed-stat-val { font-size: 24px; font-weight: 900; }
+.speed-stat-lbl { font-size: 11px; color: var(--text-dim); text-transform: uppercase; }
+
+/* ========== BACK BUTTON ========== */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text-dim);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.2s;
+}
+
+.back-btn:hover { color: var(--text); border-color: var(--accent3); }
+
+/* ========== TOOLTIP ========== */
+.tooltip {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--accent);
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 300;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.tooltip.show { transform: translateX(-50%) translateY(0); }
+
+/* ========== EXP BAR ========== */
+.exp-bar {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.exp-level {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 48px;
+}
+
+.exp-track {
+  flex: 1;
+  height: 10px;
+  background: var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.exp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 5px;
+  transition: width 0.5s;
+}
+
+.exp-text {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 600;
+  min-width: 72px;
+  text-align: right;
+}
+
+/* ========== CONFETTI ========== */
+.confetti-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  animation: confettiFall 3s ease-in forwards;
+}
+
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat-card { padding: 12px 8px; }
+  .stat-value { font-size: 22px; }
+  .sentence-en { font-size: 17px; }
+  .sentence-actions { gap: 6px; }
+  .action-btn { padding: 7px 12px; font-size: 12px; }
+  .speed-sentence { font-size: 20px; }
+  .speed-timer { font-size: 48px; }
+  .nav-title { font-size: 14px; }
+  .nav-tab { padding: 5px 10px; font-size: 12px; }
+}
+
+/* Hidden utility */
+.hidden { display: none !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* TTS speaking indicator */
+.speaking { position: relative; }
+.speaking::after {
+  content: '🔊';
+  position: absolute;
+  top: -8px; right: -8px;
+  font-size: 16px;
+  animation: speakBounce 0.5s infinite alternate;
+}
+
+@keyframes speakBounce {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+.phonetic-tip {
+  font-size: 12px;
+  color: var(--accent3);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Achievement badge */
+.achievement-popup {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 300;
+  transform: translateX(300px);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 8px 32px rgba(247,183,51,0.4);
+}
+
+.achievement-popup.show { transform: translateX(0); }
+
+.speed-mode-select {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: 16px;
+}
+
+.speed-option {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.speed-option:hover {
+  border-color: var(--accent);
+  background: var(--card-hover);
+}
+
+.speed-option-icon { font-size: 28px; }
+.speed-option-title { font-weight: 800; font-size: 16px; }
+.speed-option-desc { font-size: 12px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-title">🌟 美音口语营</div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showPage('home')">首页</button>
+      <button class="nav-tab" onclick="showPage('wrong')">错题本</button>
+      <button class="nav-tab" onclick="showPage('speed')">挑战</button>
+      <button class="nav-tab" onclick="showPage('favorites')">⭐收藏</button>
+      <button class="nav-tab" onclick="showPage('settings')">⚙️</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip"></div>
+
+<!-- Achievement popup -->
+<div class="achievement-popup" id="achievement"></div>
+
+<!-- Confetti container -->
+<div class="confetti-container" id="confetti"></div>
+
+<!-- Complete overlay -->
+<div class="complete-overlay" id="completeOverlay">
+  <div class="complete-content">
+    <div class="complete-emoji">🎉</div>
+    <div class="complete-title">太棒了！今日任务完成！</div>
+    <div class="complete-sub" id="completeSub">你的表现非常出色</div>
+    <div class="complete-stats">
+      <div><div class="complete-stat-val" id="completeCorrect">0</div><div class="complete-stat-lbl">正确</div></div>
+      <div><div class="complete-stat-val" id="completeTotal">0</div><div class="complete-stat-lbl">总数</div></div>
+      <div><div class="complete-stat-val" id="completeAccuracy">0%</div><div class="complete-stat-lbl">正确率</div></div>
+    </div>
+    <button class="btn-primary" onclick="closeComplete()">继续加油 💪</button>
+    <button class="btn-secondary" onclick="reviewWrong()">复习错题 📖</button>
+  </div>
+</div>
+
+<!-- Main content -->
+<div class="main" id="mainContent">
+  <!-- Pages are rendered dynamically -->
+</div>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const DAYS_DATA = [
+  { day:1, topic:"问候见面", basic:[
+    {en:"Good morning.",cn:"早上好。"},
+    {en:"How are you?",cn:"你好吗？"},
+    {en:"I'm fine, thank you.",cn:"我很好，谢谢你。"},
+    {en:"Nice to meet you.",cn:"很高兴见到你。"},
+    {en:"See you tomorrow.",cn:"明天见。"}
+  ], advanced:[
+    {en:"Good morning, teacher. How is your day?",cn:"老师早上好，您今天过得怎么样？"},
+    {en:"I feel very happy today.",cn:"我今天特别开心。"},
+    {en:"Long time no see. I miss you so much.",cn:"好久不见，我特别想你。"},
+    {en:"I'm pretty good, thanks for asking.",cn:"我过得很不错，谢谢你关心。"},
+    {en:"Let's play together after school, okay?",cn:"放学后我们一起玩好吗？"}
+  ]},
+  { day:2, topic:"自我介绍 & 朋友", basic:[
+    {en:"My name is Tom.",cn:"我的名字是Tom。"},
+    {en:"I am nine years old.",cn:"我九岁了。"},
+    {en:"I'm in Grade Three.",cn:"我上三年级。"},
+    {en:"This is my friend.",cn:"这是我的朋友。"},
+    {en:"We are good friends.",cn:"我们是好朋友。"}
+  ], advanced:[
+    {en:"My full name is Tom Smith, you can call me Tom.",cn:"我的全名是Tom Smith，你可以叫我Tom。"},
+    {en:"My best friend and I go to school together.",cn:"我和我最好的朋友一起上学。"},
+    {en:"I like drawing and playing football after class.",cn:"下课后我喜欢画画和踢足球。"},
+    {en:"I am an active boy.",cn:"我是一个活泼的男孩。"},
+    {en:"There are three people in my family.",cn:"我家有三口人。"}
+  ]},
+  { day:3, topic:"校园课堂", basic:[
+    {en:"Stand up.",cn:"起立。"},
+    {en:"Sit down, please.",cn:"请坐下。"},
+    {en:"Open your book.",cn:"打开你的书。"},
+    {en:"May I come in?",cn:"我可以进来吗？"},
+    {en:"Can you help me?",cn:"你能帮帮我吗？"}
+  ], advanced:[
+    {en:"Could you please say that again slowly?",cn:"你可以慢慢再说一遍吗？"},
+    {en:"I have a question about this sentence.",cn:"关于这个句子我有一个问题。"},
+    {en:"May I borrow your ruler for a minute?",cn:"我能借你的尺子用一下吗？"},
+    {en:"I don't understand this new word.",cn:"我不认识这个新单词。"},
+    {en:"I will write down all the important words.",cn:"我会把所有重点单词记下来。"}
+  ]},
+  { day:4, topic:"礼貌交际用语", basic:[
+    {en:"Thank you!",cn:"谢谢你！"},
+    {en:"You're welcome.",cn:"不客气。"},
+    {en:"Sorry.",cn:"对不起。"},
+    {en:"That's OK.",cn:"没关系。"},
+    {en:"Here you are.",cn:"给你。"}
+  ], advanced:[
+    {en:"It's so kind of you to help me.",cn:"你能帮我真是太好了。"},
+    {en:"Please take a seat and have some fruit.",cn:"请坐，吃点水果吧。"},
+    {en:"Would you mind passing me the pencil box?",cn:"麻烦把文具盒递给我好吗？"},
+    {en:"If you need help, tell me anytime.",cn:"如果你需要帮忙，随时跟我说。"},
+    {en:"Thank you so much for your nice gift.",cn:"非常感谢你送我的精美礼物。"}
+  ]},
+  { day:5, topic:"饮食与喜好", basic:[
+    {en:"I like apples.",cn:"我喜欢苹果。"},
+    {en:"I don't like bananas.",cn:"我不喜欢香蕉。"},
+    {en:"I'm hungry.",cn:"我饿了。"},
+    {en:"I'd like some milk.",cn:"我想要一些牛奶。"},
+    {en:"It's yummy!",cn:"真好吃！"}
+  ], advanced:[
+    {en:"My favourite fruit is juicy strawberries.",cn:"我最喜欢的水果是汁水满满的草莓。"},
+    {en:"Mum cooks delicious rice and vegetables for us.",cn:"妈妈给我们做香喷喷的米饭和蔬菜。"},
+    {en:"I drink warm milk before bedtime every day.",cn:"我每天睡前都会喝温牛奶。"},
+    {en:"Can I have a little more orange juice?",cn:"能再给我一点橙汁吗？"},
+    {en:"Breakfast gives me energy all morning.",cn:"早餐为我提供一上午的活力。"}
+  ]},
+  { day:6, topic:"物品、颜色、数量", basic:[
+    {en:"What's this?",cn:"这是什么？"},
+    {en:"It's a pencil.",cn:"这是一支铅笔。"},
+    {en:"What colour is it?",cn:"它是什么颜色？"},
+    {en:"It's red.",cn:"它是红色的。"},
+    {en:"How many pens?",cn:"有多少支钢笔？"}
+  ], advanced:[
+    {en:"How many colourful crayons do you have in your bag?",cn:"你的书包里有多少支彩色蜡笔？"},
+    {en:"This pencil box is a birthday gift from my dad.",cn:"这个文具盒是爸爸送我的生日礼物。"},
+    {en:"The sky is light blue on sunny days.",cn:"晴天的天空是淡蓝色的。"},
+    {en:"There are twelve stars on my schoolbag.",cn:"我的书包上有十二颗星星。"},
+    {en:"My water bottle is beside the chair.",cn:"我的水杯在椅子旁边。"}
+  ]},
+  { day:7, topic:"家人、心情、身体", basic:[
+    {en:"This is my mum.",cn:"这是我的妈妈。"},
+    {en:"I love my family.",cn:"我爱我的家人。"},
+    {en:"I'm happy.",cn:"我很开心。"},
+    {en:"This is my hand.",cn:"这是我的手。"},
+    {en:"My hair is black.",cn:"我的头发是黑色的。"}
+  ], advanced:[
+    {en:"Dad goes to work early every morning.",cn:"爸爸每天早上很早去上班。"},
+    {en:"Grandma tells me interesting old stories.",cn:"奶奶给我讲有趣的老故事。"},
+    {en:"My eyes get tired after watching videos too long.",cn:"看视频太久我的眼睛会很累。"},
+    {en:"We walk with our dog after dinner.",cn:"晚饭后我们带着小狗散步。"},
+    {en:"We love each other and live happily.",cn:"我们彼此相爱，幸福地生活在一起。"}
+  ]},
+  { day:8, topic:"出行游玩", basic:[
+    {en:"Let's go out.",cn:"我们出去吧。"},
+    {en:"By bike.",cn:"骑自行车。"},
+    {en:"I like parks.",cn:"我喜欢公园。"},
+    {en:"It's fun.",cn:"很好玩。"},
+    {en:"Come with me.",cn:"跟我来。"}
+  ], advanced:[
+    {en:"We will go to the park by bike this weekend.",cn:"这周末我们要骑自行车去公园。"},
+    {en:"There are many beautiful flowers and tall trees there.",cn:"那里有许多漂亮的花朵和高大的树木。"},
+    {en:"I want to fly a kite and run on the grass.",cn:"我想在草地上放风筝、奔跑。"},
+    {en:"It's so much fun to play outside with my family.",cn:"和家人在户外玩耍特别有意思。"},
+    {en:"We will come back home before dinner time.",cn:"我们会晚饭前回家。"}
+  ]},
+  { day:9, topic:"时间作息", basic:[
+    {en:"Get up early.",cn:"早起。"},
+    {en:"Time for school.",cn:"该上学了。"},
+    {en:"Do homework.",cn:"写作业。"},
+    {en:"Go to bed.",cn:"上床睡觉。"},
+    {en:"It's seven o'clock.",cn:"现在七点了。"}
+  ], advanced:[
+    {en:"I get up at seven every morning to wash my face.",cn:"我每天早上七点起床洗脸。"},
+    {en:"I finish my homework before watching cartoons.",cn:"我看完动画片前先写完作业。"},
+    {en:"It's eight thirty, it's time to go to sleep.",cn:"八点半了，该睡觉了。"},
+    {en:"I brush my teeth and wash hands every day.",cn:"我每天刷牙、洗手。"},
+    {en:"A good sleep makes me energetic next day.",cn:"充足的睡眠让我第二天精力充沛。"}
+  ]},
+  { day:10, topic:"动物小动物", basic:[
+    {en:"It's a cat.",cn:"这是一只小猫。"},
+    {en:"The dog is cute.",cn:"这只小狗很可爱。"},
+    {en:"I like birds.",cn:"我喜欢小鸟。"},
+    {en:"It can jump.",cn:"它会跳。"},
+    {en:"Small rabbit.",cn:"小兔子。"}
+  ], advanced:[
+    {en:"My little pet cat likes to sleep on my sofa.",cn:"我的小宠物猫喜欢睡在我的沙发上。"},
+    {en:"The white rabbit has two long ears and red eyes.",cn:"小白兔有两只长耳朵和红眼睛。"},
+    {en:"Little birds can fly high up in the blue sky.",cn:"小鸟能在蓝天上飞得很高。"},
+    {en:"Dogs can run fast and play games with people.",cn:"小狗跑得很快，还能和人一起玩耍。"},
+    {en:"I want to visit the zoo and see pandas one day.",cn:"我希望有一天去动物园看熊猫。"}
+  ]},
+  { day:11, topic:"穿着衣物", basic:[
+    {en:"This is my coat.",cn:"这是我的外套。"},
+    {en:"Put on shoes.",cn:"穿上鞋子。"},
+    {en:"Nice dress.",cn:"漂亮的连衣裙。"},
+    {en:"Warm sweater.",cn:"暖和的毛衣。"},
+    {en:"Take off hat.",cn:"摘下帽子。"}
+  ], advanced:[
+    {en:"I put on my thick coat when it is cold outside.",cn:"外面冷的时候我会穿上厚外套。"},
+    {en:"This pink dress is my favourite clothes for holidays.",cn:"这条粉色连衣裙是我过节最爱穿的衣服。"},
+    {en:"My sports shoes are comfortable for running and PE.",cn:"我的运动鞋跑步、上体育课穿很舒服。"},
+    {en:"This soft sweater keeps me warm in autumn.",cn:"这件柔软的毛衣让我秋天暖暖和和。"},
+    {en:"Please take off your dirty shoes before entering the room.",cn:"进屋前请脱掉脏鞋子。"}
+  ]},
+  { day:12, topic:"能力与运动", basic:[
+    {en:"I can swim.",cn:"我会游泳。"},
+    {en:"She can jump.",cn:"她会跳。"},
+    {en:"Play basketball.",cn:"打篮球。"},
+    {en:"Run fast.",cn:"跑得快。"},
+    {en:"Can you draw?",cn:"你会画画吗？"}
+  ], advanced:[
+    {en:"I can swim slowly in the swimming pool in summer.",cn:"夏天我可以在泳池里慢慢游泳。"},
+    {en:"My friend can jump very high in the PE class.",cn:"我的朋友体育课能跳得很高。"},
+    {en:"We play basketball together after school every Wednesday.",cn:"每周三放学后我们一起打篮球。"},
+    {en:"I run fast to keep my body strong and healthy.",cn:"我快跑锻炼身体，保持健康强壮。"},
+    {en:"Can you teach me how to draw lovely little animals?",cn:"你能教我画可爱的小动物吗？"}
+  ]},
+  { day:13, topic:"天气四季", basic:[
+    {en:"It's sunny.",cn:"天气晴朗。"},
+    {en:"Cold winter.",cn:"寒冷的冬天。"},
+    {en:"Hot summer.",cn:"炎热的夏天。"},
+    {en:"Windy today.",cn:"今天刮风。"},
+    {en:"Nice spring.",cn:"美好的春天。"}
+  ], advanced:[
+    {en:"It is sunny and warm in spring with many blooming flowers.",cn:"春天阳光温暖，百花盛开。"},
+    {en:"Summer is very hot, so we can eat cool watermelon.",cn:"夏天很热，我们可以吃冰凉的西瓜。"},
+    {en:"Autumn is cool, leaves turn yellow and fall down from trees.",cn:"秋天凉爽，树叶变黄从树上飘落。"},
+    {en:"Winter is cold and sometimes we can see white snow.",cn:"冬天很冷，有时候我们能看见白雪。"},
+    {en:"It's windy today, so we can fly kites in the open ground.",cn:"今天有风，我们可以在空地上放风筝。"}
+  ]},
+  { day:14, topic:"礼物节日", basic:[
+    {en:"Happy birthday!",cn:"生日快乐！"},
+    {en:"A nice gift.",cn:"一份精美的礼物。"},
+    {en:"Thank you for present.",cn:"谢谢你的礼物。"},
+    {en:"Happy New Year.",cn:"新年快乐。"},
+    {en:"I love it.",cn:"我很喜欢它。"}
+  ], advanced:[
+    {en:"Happy birthday! This toy car is a small gift for you.",cn:"生日快乐！这辆玩具小车是送给你的小礼物。"},
+    {en:"I make a hand-drawn card for my mother on Mother's Day.",cn:"母亲节我给妈妈画一张手绘贺卡。"},
+    {en:"We eat big cakes and sing songs at birthday parties.",cn:"生日派对上我们吃大蛋糕、唱歌。"},
+    {en:"Happy New Year, wish you a happy and healthy year.",cn:"新年快乐，祝你一年开心健康。"},
+    {en:"I like this gift so much, it is exactly what I want.",cn:"我太喜欢这份礼物了，这正是我想要的。"}
+  ]},
+  { day:15, topic:"玩具与游戏", basic:[
+    {en:"This is my toy car.",cn:"这是我的玩具车。"},
+    {en:"I like toys.",cn:"我喜欢玩具。"},
+    {en:"Let's play games.",cn:"我们来玩游戏吧。"},
+    {en:"It's cool.",cn:"太酷了。"},
+    {en:"Give me the ball.",cn:"把球递给我。"}
+  ], advanced:[
+    {en:"I have many toy cars and cute building blocks at home.",cn:"我家里有很多玩具车和可爱积木。"},
+    {en:"We can play ball games together in the playground after class.",cn:"下课后我们可以在操场一起玩球类游戏。"},
+    {en:"This robot toy can walk and make funny little sounds.",cn:"这个机器人玩具会走路，还会发出有趣的声音。"},
+    {en:"Playing toys makes me relaxed after finishing homework.",cn:"写完作业玩玩具能让我放松。"},
+    {en:"Could you share your interesting toy with me for a while?",cn:"能把你好玩的玩具借我玩一会儿吗？"}
+  ]},
+  { day:16, topic:"看书学习", basic:[
+    {en:"Read books.",cn:"看书。"},
+    {en:"I like stories.",cn:"我喜欢故事。"},
+    {en:"This book is fun.",cn:"这本书很有趣。"},
+    {en:"Learn new words.",cn:"学习新单词。"},
+    {en:"Turn the page.",cn:"翻页。"}
+  ], advanced:[
+    {en:"I read English storybooks for ten minutes every evening.",cn:"我每天晚上读十分钟英语故事书。"},
+    {en:"There are many funny pictures inside this children's book.",cn:"这本儿童书里面有很多有趣的图画。"},
+    {en:"I write down new words in my small notebook to remember them.",cn:"我把新单词记在小本子上方便背诵。"},
+    {en:"Reading helps me know more interesting things around the world.",cn:"阅读让我了解世界上更多有趣的事。"},
+    {en:"Can you tell me what your favourite story is about?",cn:"你能跟我讲讲你最喜欢的故事讲了什么吗？"}
+  ]},
+  { day:17, topic:"家务劳动", basic:[
+    {en:"Clean the desk.",cn:"擦桌子。"},
+    {en:"Sweep the floor.",cn:"扫地。"},
+    {en:"Wash cups.",cn:"洗杯子。"},
+    {en:"Put clothes away.",cn:"收好衣服。"},
+    {en:"Help mum.",cn:"帮妈妈干活。"}
+  ], advanced:[
+    {en:"I often help my mum clean my bedroom on weekends.",cn:"周末我经常帮妈妈打扫我的卧室。"},
+    {en:"I can sweep the floor and put my toys in the box by myself.",cn:"我能自己扫地，把玩具收进箱子里。"},
+    {en:"After meals, I help wash small bowls and cups in the kitchen.",cn:"饭后我在厨房帮忙洗小碗和杯子。"},
+    {en:"It's good for kids to do simple housework at home every day.",cn:"小朋友每天做点简单家务是好事。"},
+    {en:"My parents say I am a helpful and hard-working child.",cn:"爸爸妈妈说我是个勤快、爱帮忙的好孩子。"}
+  ]},
+  { day:18, topic:"大小方位", basic:[
+    {en:"Big apple.",cn:"大苹果。"},
+    {en:"Small box.",cn:"小盒子。"},
+    {en:"On the desk.",cn:"在桌子上面。"},
+    {en:"Under the chair.",cn:"在椅子下面。"},
+    {en:"Next to the bag.",cn:"在书包旁边。"}
+  ], advanced:[
+    {en:"The big tree stands next to our small school gate.",cn:"大树矗立在我们小小的校门旁。"},
+    {en:"My pencil box is under the big desk beside the window.",cn:"我的文具盒在窗边的大桌子底下。"},
+    {en:"There is a small cat sitting on top of the wooden box.",cn:"一只小猫蹲在木箱子顶上。"},
+    {en:"The white ball is far away from your black schoolbag.",cn:"白色的球离你的黑书包很远。"},
+    {en:"Can you tell me where my blue water bottle is?",cn:"你能告诉我我的蓝色水杯在哪里吗？"}
+  ]},
+  { day:19, topic:"情绪感受", basic:[
+    {en:"I'm tired.",cn:"我累了。"},
+    {en:"I'm excited.",cn:"我很兴奋。"},
+    {en:"I feel bored.",cn:"我觉得无聊。"},
+    {en:"I'm shy.",cn:"我很害羞。"},
+    {en:"So glad.",cn:"太开心了。"}
+  ], advanced:[
+    {en:"I feel a little tired after running around in PE class.",cn:"体育课到处跑之后我有点累。"},
+    {en:"I am so excited because we will go to the zoo tomorrow.",cn:"明天要去动物园，我特别激动。"},
+    {en:"When there is no one to play with me, I feel bored at home.",cn:"没人陪我玩的时候，我在家会很无聊。"},
+    {en:"I am a little shy when I speak English in front of the whole class.",cn:"在全班同学面前说英语我会有点害羞。"},
+    {en:"I feel so glad when my friends play nicely with me.",cn:"朋友们好好跟我玩耍时，我特别开心。"}
+  ]},
+  { day:20, topic:"超市购物", basic:[
+    {en:"I want oranges.",cn:"我想要橙子。"},
+    {en:"How much?",cn:"多少钱？"},
+    {en:"Here's money.",cn:"给你钱。"},
+    {en:"This one please.",cn:"请拿这个。"},
+    {en:"Too expensive.",cn:"太贵了。"}
+  ], advanced:[
+    {en:"Mum and I go to the supermarket to buy fruit and snacks.",cn:"我和妈妈去超市买水果和零食。"},
+    {en:"How much is this box of sweet cookies, please?",cn:"请问这盒甜饼干多少钱？"},
+    {en:"I pick fresh oranges and strawberries from the fruit shelf.",cn:"我在水果货架挑选新鲜橙子和草莓。"},
+    {en:"We take a shopping bag to put all our things inside.",cn:"我们拿购物袋把所有东西装进去。"},
+    {en:"This toy is too expensive, so I will not buy it today.",cn:"这个玩具太贵了，我今天不买。"}
+  ]},
+  { day:21, topic:"梦想爱好", basic:[
+    {en:"I love drawing.",cn:"我喜欢画画。"},
+    {en:"I want to be a teacher.",cn:"我想当一名老师。"},
+    {en:"Sing songs well.",cn:"唱歌很好听。"},
+    {en:"Play the piano.",cn:"弹钢琴。"},
+    {en:"Dream job.",cn:"理想职业。"}
+  ], advanced:[
+    {en:"My biggest hobby is drawing colourful pictures every afternoon.",cn:"我最大的爱好是每天下午画彩色图画。"},
+    {en:"I practice playing the piano for half an hour each day after school.",cn:"我每天放学后练半小时钢琴。"},
+    {en:"I hope I can become a kind English teacher in the future.",cn:"我希望将来成为一名温柔的英语老师。"},
+    {en:"Singing English songs helps me speak English more fluently.",cn:"唱英文歌能让我说英语更流利。"},
+    {en:"I will keep practicing hard to make my little dream come true.",cn:"我会坚持努力练习，实现我的小梦想。"}
+  ]},
+  { day:22, topic:"交通工具", basic:[
+    {en:"By bus.",cn:"坐公交车。"},
+    {en:"By car.",cn:"坐小汽车。"},
+    {en:"By train.",cn:"坐火车。"},
+    {en:"By plane.",cn:"坐飞机。"},
+    {en:"Walk to school.",cn:"走路去上学。"}
+  ], advanced:[
+    {en:"My dad drives his car to send me to school every morning.",cn:"爸爸每天早上开车送我上学。"},
+    {en:"We take a fast train to visit my grandparents on holiday.",cn:"假期我们坐高铁去看望爷爷奶奶。"},
+    {en:"The big plane can fly high above white clouds in the sky.",cn:"大飞机能在白云上方高高飞翔。"},
+    {en:"I like to walk slowly and see flowers on the way home.",cn:"我喜欢慢慢走路，欣赏回家路上的小花。"},
+    {en:"Taking the bus is cheap and good for our environment.",cn:"坐公交便宜，还保护环境。"}
+  ]},
+  { day:23, topic:"五官感官", basic:[
+    {en:"I see a bird.",cn:"我看见一只小鸟。"},
+    {en:"I hear music.",cn:"我听见音乐。"},
+    {en:"Taste candy.",cn:"品尝糖果。"},
+    {en:"Smell flowers.",cn:"闻花香。"},
+    {en:"Touch soft cloth.",cn:"触摸柔软的布料。"}
+  ], advanced:[
+    {en:"I can see many little fish swimming in the clear river.",cn:"我能看见许多小鱼在清澈的河里游来游去。"},
+    {en:"I hear beautiful piano music coming from the next room.",cn:"我听见隔壁房间传来优美的钢琴曲。"},
+    {en:"This sweet apple tastes fresh and juicy after washing.",cn:"洗干净的甜苹果吃起来新鲜多汁。"},
+    {en:"Pink roses smell very nice outside our house.",cn:"屋外的粉玫瑰闻起来很香。"},
+    {en:"The little rabbit's fur feels soft and warm to touch.",cn:"小兔子的皮毛摸起来柔软又暖和。"}
+  ]},
+  { day:24, topic:"星期计划", basic:[
+    {en:"It's Monday.",cn:"今天星期一。"},
+    {en:"On Saturday.",cn:"在周六。"},
+    {en:"Play on Sunday.",cn:"周日玩耍。"},
+    {en:"Have class today.",cn:"今天上课。"},
+    {en:"Free tomorrow.",cn:"明天有空。"}
+  ], advanced:[
+    {en:"We have English and math classes every Monday and Wednesday.",cn:"每周一、周三我们有英语和数学课。"},
+    {en:"I finish all my homework first on Saturday morning.",cn:"周六早上我先把所有作业写完。"},
+    {en:"My family and I go for a picnic in the park on Sunday.",cn:"周日我和家人去公园野餐。"},
+    {en:"I have no extra classes and I am free this afternoon.",cn:"今天下午没有补习班，我有空。"},
+    {en:"What fun things do you plan to do this weekend?",cn:"这周末你打算做什么好玩的事？"}
+  ]},
+  { day:25, topic:"树木花草植物", basic:[
+    {en:"Green grass.",cn:"青草。"},
+    {en:"Red flower.",cn:"红花。"},
+    {en:"Tall tree.",cn:"高大的树。"},
+    {en:"Small leaf.",cn:"小树叶。"},
+    {en:"Grow fast.",cn:"长得快。"}
+  ], advanced:[
+    {en:"Green grass covers the ground everywhere in warm spring.",cn:"温暖的春天，地上到处长满青草。"},
+    {en:"Many colorful flowers bloom in our school garden now.",cn:"学校花园现在开满五颜六色的花。"},
+    {en:"There is a very tall old tree behind our classroom building.",cn:"教学楼后面有一棵很高的老树。"},
+    {en:"Every little leaf turns yellow and falls down in cool autumn.",cn:"凉爽的秋天，每一片小叶子都会变黄飘落。"},
+    {en:"If we water them often, plants will grow taller day by day.",cn:"如果我们经常浇水，植物会一天天长高。"}
+  ]},
+  { day:26, topic:"对错建议", basic:[
+    {en:"You are right.",cn:"你是对的。"},
+    {en:"That's wrong.",cn:"那是错的。"},
+    {en:"Let's try again.",cn:"我们再试一次。"},
+    {en:"You should study.",cn:"你应该学习。"},
+    {en:"Don't run fast.",cn:"不要快跑。"}
+  ], advanced:[
+    {en:"Your answer to this English question is completely right.",cn:"这道英语题你的答案完全正确。"},
+    {en:"Don't be sad if your answer is wrong, we can correct it together.",cn:"答错了别难过，我们一起改正。"},
+    {en:"If you can't read well, let's read this sentence slowly again.",cn:"如果你读不顺，我们再慢慢读一遍这个句子。"},
+    {en:"You should spend more time reading English every single day.",cn:"你每天应该多花点时间读英语。"},
+    {en:"Please don't run fast inside the classroom, it's dangerous.",cn:"不要在教室里快跑，很危险。"}
+  ]},
+  { day:27, topic:"早餐午餐晚餐", basic:[
+    {en:"Milk for breakfast.",cn:"早餐喝牛奶。"},
+    {en:"Rice for lunch.",cn:"午餐吃米饭。"},
+    {en:"Soup for dinner.",cn:"晚餐喝汤。"},
+    {en:"Eat vegetables.",cn:"吃蔬菜。"},
+    {en:"Drink water.",cn:"喝水。"}
+  ], advanced:[
+    {en:"I usually have bread and warm milk for my breakfast at seven.",cn:"我通常七点吃面包、喝温牛奶当早餐。"},
+    {en:"At noon, we eat rice, chicken and green vegetables for lunch.",cn:"中午我们午餐吃米饭、鸡肉和青菜。"},
+    {en:"Mum cooks tasty vegetable soup for our light dinner every night.",cn:"妈妈每晚都会煮鲜美的蔬菜汤当清淡晚餐。"},
+    {en:"Eating lots of vegetables keeps our bodies strong and healthy.",cn:"多吃蔬菜能让我们身体强壮健康。"},
+    {en:"Remember to drink enough plain water between meals.",cn:"记得两餐之间多喝白开水。"}
+  ]},
+  { day:28, topic:"称赞夸奖", basic:[
+    {en:"You are great.",cn:"你太棒了。"},
+    {en:"Very nice!",cn:"真好看！"},
+    {en:"Good job!",cn:"做得好！"},
+    {en:"Beautiful drawing.",cn:"漂亮的画作。"},
+    {en:"You're clever.",cn:"你很聪明。"}
+  ], advanced:[
+    {en:"You speak English so clearly, you do an amazing job today.",cn:"你英语说得特别清晰，今天表现超棒。"},
+    {en:"This hand drawing you made looks bright and really beautiful.",cn:"你这幅手绘色彩鲜亮，特别好看。"},
+    {en:"You are very clever to work out this difficult math problem quickly.",cn:"你真聪明，这么快就算出这道数学难题。"},
+    {en:"It's great that you always help your classmates with their study.",cn:"你总主动帮助同学学习，这点特别棒。"},
+    {en:"I'm proud of you because you keep practicing hard every day.",cn:"你每天坚持刻苦练习，我为你感到骄傲。"}
+  ]},
+  { day:29, topic:"公园户外玩耍", basic:[
+    {en:"Run on grass.",cn:"在草地上奔跑。"},
+    {en:"Feed ducks.",cn:"喂鸭子。"},
+    {en:"Slide down.",cn:"滑滑梯。"},
+    {en:"Fly a kite.",cn:"放风筝。"},
+    {en:"Climb swings.",cn:"荡秋千。"}
+  ], advanced:[
+    {en:"I love running and jumping on the soft green grass in the park.",cn:"我喜欢在公园柔软的青草地上跑跳。"},
+    {en:"We take small bread to feed cute little ducks by the lake.",cn:"我们带小块面包去湖边喂可爱的小鸭子。"},
+    {en:"I like sliding down the long slide again and again happily.",cn:"我喜欢一遍又一遍开心地滑长长的滑梯。"},
+    {en:"When the wind blows, my colourful kite flies high in the sky.",cn:"起风时，我的彩色风筝飞上高空。"},
+    {en:"After playing for an hour, we sit on the bench to have a rest.",cn:"玩一小时后，我们坐在长椅上休息。"}
+  ]},
+  { day:30, topic:"文具用品整理", basic:[
+    {en:"Put pens away.",cn:"收好钢笔。"},
+    {en:"Sharpen pencil.",cn:"削铅笔。"},
+    {en:"Fold paper.",cn:"折纸。"},
+    {en:"Stick stickers.",cn:"贴贴纸。"},
+    {en:"Close schoolbag.",cn:"合上书包。"}
+  ], advanced:[
+    {en:"I tidy up all my pens and pencils neatly in my pencil box.",cn:"我把所有钢笔、铅笔整齐收进文具盒。"},
+    {en:"I use a small sharpener to make my broken pencil pointy again.",cn:"我用小卷笔刀把断铅笔削尖。"},
+    {en:"I can fold square paper into cute little paper boats by myself.",cn:"我能自己把正方形纸折成可爱的小船。"},
+    {en:"I put lovely cartoon stickers on the front of my notebook.",cn:"我在笔记本封面贴上可爱的卡通贴纸。"},
+    {en:"Before going to bed, I check and close my schoolbag carefully.",cn:"睡前我仔细检查并关好书包。"}
+  ]},
+  { day:31, topic:"生病与休养", basic:[
+    {en:"I have a cold.",cn:"我感冒了。"},
+    {en:"Drink hot water.",cn:"喝热水。"},
+    {en:"Stay in bed.",cn:"卧床休息。"},
+    {en:"Take medicine.",cn:"吃药。"},
+    {en:"Feel better.",cn:"感觉好多了。"}
+  ], advanced:[
+    {en:"I wear more clothes because I caught a cold yesterday morning.",cn:"我多穿了衣服，因为昨天早上感冒了。"},
+    {en:"Mum tells me to drink lots of hot warm water all day long.",cn:"妈妈让我一整天多喝温热的水。"},
+    {en:"If I feel weak, I need to stay in bed and have a good rest.",cn:"如果浑身发软，我就要卧床好好休息。"},
+    {en:"I will take a little medicine after eating my meals.",cn:"我会饭后吃一点药。"},
+    {en:"After two days' rest, I will feel much better and go back to school.",cn:"休息两天后，我就会好转，回学校上课。"}
+  ]},
+  { day:32, topic:"排队秩序规则", basic:[
+    {en:"Wait in line.",cn:"排队等候。"},
+    {en:"Don't push.",cn:"不要推挤。"},
+    {en:"Take turns.",cn:"轮流来。"},
+    {en:"Keep quiet.",cn:"保持安静。"},
+    {en:"Walk slowly.",cn:"慢慢走。"}
+  ], advanced:[
+    {en:"We must wait in a long line when buying snacks at school shop.",cn:"在校小卖部买零食时我们必须排队。"},
+    {en:"Please do not push others; it is rude and not safe at all.",cn:"请勿推别人，这样既不礼貌也很危险。"},
+    {en:"We should take turns to play toys and use the classroom books.",cn:"我们应该轮流玩玩具、借阅教室图书。"},
+    {en:"Inside the library, we need to keep quiet and talk in soft voices.",cn:"图书馆内要保持安静，轻声说话。"},
+    {en:"Walk slowly in the hallway so we won't knock into classmates.",cn:"走廊里慢行，避免撞到同学。"}
+  ]},
+  { day:33, topic:"山水自然风景", basic:[
+    {en:"High mountains.",cn:"高高的大山。"},
+    {en:"Clear river.",cn:"清澈的小河。"},
+    {en:"Big lake.",cn:"宽阔的湖泊。"},
+    {en:"White clouds.",cn:"白云。"},
+    {en:"Soft wind.",cn:"柔和的风。"}
+  ], advanced:[
+    {en:"We saw tall green mountains when we took a trip last holiday.",cn:"上次假期出游，我们看见了青翠的高山。"},
+    {en:"Small fish swim freely in the clear and cool river water.",cn:"小鱼在清凉清澈的河水里自在游动。"},
+    {en:"There are many quiet ducks swimming on the surface of the big lake.",cn:"许多安静的鸭子在宽阔的湖面上游动。"},
+    {en:"White fluffy clouds change different shapes high up in the sky.",cn:"天上蓬松的白云变幻出各种各样的形状。"},
+    {en:"The soft cool wind makes us feel comfortable in summer afternoon.",cn:"夏日午后，凉爽轻柔的风让人十分舒服。"}
+  ]},
+  { day:34, topic:"赠送与分享", basic:[
+    {en:"This for you.",cn:"这个送给你。"},
+    {en:"Share snacks.",cn:"分享零食。"},
+    {en:"Give a card.",cn:"送一张贺卡。"},
+    {en:"Split toys.",cn:"分享玩具。"},
+    {en:"You take first.",cn:"你先拿。"}
+  ], advanced:[
+    {en:"This small handmade card is a little gift specially for you.",cn:"这张手工小贺卡是专门送给你的小礼物。"},
+    {en:"I like to share my tasty fruit and snacks with my deskmate.",cn:"我喜欢和同桌分享好吃的水果、零食。"},
+    {en:"I will give my extra storybook to my best friend to read.",cn:"我会把多余的故事书借给最好的朋友阅读。"},
+    {en:"It is polite to split your favourite toys with other kids.",cn:"和其他小朋友分享心爱的玩具是有礼貌的行为。"},
+    {en:"You can take the bigger apple first, I don't mind at all.",cn:"你先拿大苹果吧，我完全不在意。"}
+  ]},
+  { day:35, topic:"观看影视动画", basic:[
+    {en:"Watch cartoons.",cn:"看动画片。"},
+    {en:"Funny show.",cn:"有趣的节目。"},
+    {en:"Nice story.",cn:"精彩的故事。"},
+    {en:"Brave hero.",cn:"勇敢的主角。"},
+    {en:"Happy ending.",cn:"圆满的结局。"}
+  ], advanced:[
+    {en:"I can watch English cartoons for twenty minutes after finishing homework.",cn:"写完作业我可以看二十分钟英文动画片。"},
+    {en:"This cartoon show is full of funny jokes and warm little stories.",cn:"这部动画片充满搞笑段子和温暖小故事。"},
+    {en:"The main character is a brave hero who helps many small animals.",cn:"主角是一位乐于助人、勇敢的小英雄。"},
+    {en:"Every episode has a sweet happy ending that makes me smile.",cn:"每一集都有温馨圆满的结局，看得我很开心。"},
+    {en:"I try to listen carefully and repeat the easy lines from the cartoon.",cn:"我认真听动画，跟读里面简单的台词。"}
+  ]}
+];
+
+// ============================================================
+// STATE MANAGEMENT
+// ============================================================
+const STORAGE_KEY = 'oral_practice_v3';
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch(e) {}
+  return {
+    streak: 0,
+    lastCheckIn: null,
+    totalPracticed: 0,
+    totalCorrect: 0,
+    exp: 0,
+    level: 1,
+    dayProgress: {},   // { "1": { correct: [0,1,2], wrong: [3,4], completed: true } }
+    wrongBook: [],      // [{ day, section, index, en, cn, attempts }]
+    checkinDates: [],   // ["2024-01-01", ...]
+    achievements: [],
+    speedBest: 0,
+    favorites: [],      // [{ day, index, en, cn, timestamp }]
+    speechRate: 0.85    // TTS speed 0.6~1.2
+  };
+}
+
+function saveState() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch(e) {}
+}
+
+let state = loadState();
+
+// Ensure new fields exist for backward compatibility
+if (!state.favorites) state.favorites = [];
+if (!state.speechRate) state.speechRate = 0.85;
+
+let currentPage = 'home';
+let currentDay = null;
+let currentSection = 'basic';
+let speechSynth = window.speechSynthesis;
+let recognition = null;
+let isRecording = false;
+let currentRecordingIdx = null;
+
+// ============================================================
+// SPEECH RECOGNITION SETUP
+// ============================================================
+function setupRecognition() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) {
+    console.error('SpeechRecognition not supported');
+    return null;
+  }
+  
+  try {
+    const rec = new SpeechRecognition();
+    rec.lang = 'en-US';
+    rec.continuous = false;
+    rec.interimResults = false;
+    rec.maxAlternatives = 3;
+    
+    // Add silence detection timeout (5 seconds)
+    let silenceTimer = null;
+    let hasReceivedSpeech = false;
+    
+    rec.onspeechstart = () => {
+      hasReceivedSpeech = true;
+      if (silenceTimer) clearTimeout(silenceTimer);
+    };
+    
+    const startHandler = () => {
+      hasReceivedSpeech = false;
+      silenceTimer = setTimeout(() => {
+        if (!hasReceivedSpeech) {
+          try { rec.stop(); } catch(e) {}
+          showTooltip('🎙️ 未检测到语音，请重试');
+        }
+      }, 5000);
+    };
+    
+    rec.addEventListener('start', startHandler);
+    
+    const endHandler = () => {
+      if (silenceTimer) clearTimeout(silenceTimer);
+    };
+    
+    rec.addEventListener('end', endHandler);
+    
+    console.log('SpeechRecognition initialized successfully');
+    return rec;
+  } catch (e) {
+    console.error('Failed to initialize SpeechRecognition:', e);
+    return null;
+  }
+}
+
+// ============================================================
+// TTS - American English
+// ============================================================
+function speakUS(text, callback) {
+  speechSynth.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  utterance.rate = state.speechRate || 0.85;
+  utterance.pitch = 1.0;
+  
+  // Try to find US English voice
+  const voices = speechSynth.getVoices();
+  const usVoice = voices.find(v => v.lang === 'en-US' && v.name.includes('Samantha'))
+    || voices.find(v => v.lang === 'en-US' && !v.name.includes('UK'))
+    || voices.find(v => v.lang.startsWith('en-US'))
+    || voices.find(v => v.lang.startsWith('en'));
+  if (usVoice) utterance.voice = usVoice;
+  
+  if (callback) utterance.onend = callback;
+  speechSynth.speak(utterance);
+}
+
+// Preload voices
+if (speechSynth.onvoiceschanged !== undefined) {
+  speechSynth.onvoiceschanged = () => {};
+}
+speechSynth.getVoices();
+
+// ============================================================
+// UTILITY
+// ============================================================
+function showTooltip(msg) {
+  const el = document.getElementById('tooltip');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+function showAchievement(msg) {
+  const el = document.getElementById('achievement');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3500);
+}
+
+function launchConfetti() {
+  const container = document.getElementById('confetti');
+  const colors = ['#f7b733','#fc5c7d','#6a82fb','#00e676','#ff5252','#fff'];
+  for (let i = 0; i < 50; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 100 + '%';
+    c.style.top = '-10px';
+    c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    c.style.animationDelay = Math.random() * 2 + 's';
+    c.style.animationDuration = (2 + Math.random() * 2) + 's';
+    c.style.width = (6 + Math.random() * 8) + 'px';
+    c.style.height = (6 + Math.random() * 8) + 'px';
+    container.appendChild(c);
+  }
+  setTimeout(() => container.innerHTML = '', 5000);
+}
+
+function getTodayStr() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function addExp(amount) {
+  state.exp += amount;
+  const needed = state.level * 100;
+  if (state.exp >= needed) {
+    state.exp -= needed;
+    state.level++;
+    showAchievement(`🎊 升级了! 等级 ${state.level}`);
+    launchConfetti();
+  }
+  saveState();
+}
+
+function checkStreak() {
+  const today = getTodayStr();
+  if (state.lastCheckIn === today) return;
+  
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yStr = yesterday.toISOString().split('T')[0];
+  
+  if (state.lastCheckIn === yStr) {
+    state.streak++;
+  } else if (state.lastCheckIn !== today) {
+    state.streak = 1;
+  }
+  
+  state.lastCheckIn = today;
+  if (!state.checkinDates.includes(today)) {
+    state.checkinDates.push(today);
+  }
+  saveState();
+}
+
+// ============================================================
+// WORD COMPARISON
+// ============================================================
+function compareWords(target, spoken) {
+  const tWords = target.toLowerCase().replace(/[^a-z0-9\s']/g, '').split(/\s+/).filter(Boolean);
+  const sWords = spoken.toLowerCase().replace(/[^a-z0-9\s']/g, '').split(/\s+/).filter(Boolean);
+  
+  let matchCount = 0;
+  const results = [];
+  
+  for (let i = 0; i < tWords.length; i++) {
+    const tw = tWords[i];
+    let found = false;
+    for (let j = 0; j < sWords.length; j++) {
+      if (sWords[j] === tw || levenshtein(sWords[j], tw) <= 1) {
+        found = true;
+        break;
+      }
+    }
+    results.push({ word: tw, correct: found });
+    if (found) matchCount++;
+  }
+  
+  const score = tWords.length > 0 ? Math.round((matchCount / tWords.length) * 100) : 0;
+  return { score, results, spoken: sWords.join(' ') };
+}
+
+function levenshtein(a, b) {
+  const m = a.length, n = b.length;
+  const d = Array.from({length: m+1}, () => new Array(n+1).fill(0));
+  for (let i = 0; i <= m; i++) d[i][0] = i;
+  for (let j = 0; j <= n; j++) d[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      d[i][j] = Math.min(
+        d[i-1][j] + 1,
+        d[i][j-1] + 1,
+        d[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1)
+      );
+    }
+  }
+  return d[m][n];
+}
+
+// ============================================================
+// PAGES
+// ============================================================
+function showPage(page) {
+  currentPage = page;
+  document.querySelectorAll('.nav-tab').forEach((t, i) => {
+    t.classList.toggle('active', ['home','wrong','speed','favorites','settings'][i] === page);
+  });
+  speechSynth.cancel();
+  render();
+}
+
+function render() {
+  const main = document.getElementById('mainContent');
+  switch (currentPage) {
+    case 'home': main.innerHTML = currentDay ? renderPractice() : renderHome(); break;
+    case 'wrong': main.innerHTML = renderWrongBook(); break;
+    case 'speed': main.innerHTML = renderSpeed(); break;
+    case 'favorites': main.innerHTML = renderFavorites(); break;
+    case 'settings': main.innerHTML = renderSettings(); break;
+  }
+}
+
+// ============================================================
+// HOME PAGE
+// ============================================================
+function renderHome() {
+  const today = getTodayStr();
+  const isCheckedIn = state.checkinDates.includes(today);
+  const expNeeded = state.level * 100;
+  const expPct = Math.min(100, (state.exp / expNeeded) * 100);
+  const accuracy = state.totalPracticed > 0 ? Math.round((state.totalCorrect / state.totalPracticed) * 100) : 0;
+  
+  // Calendar for last 35 days
+  let calHTML = '';
+  for (let i = 34; i >= 0; i--) {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const ds = d.toISOString().split('T')[0];
+    const done = state.checkinDates.includes(ds);
+    const isToday = ds === today;
+    const label = d.getDate();
+    calHTML += `<div class="cal-day ${done?'done':''} ${isToday?'today':''}">${done?'✓':label}</div>`;
+  }
+  
+  // Day cards
+  let dayCards = '';
+  for (const d of DAYS_DATA) {
+    const prog = state.dayProgress[d.day] || { correct: [], wrong: [], completed: false };
+    const total = 10;
+    const done = (prog.correct || []).length;
+    const pct = Math.round((done / total) * 100);
+    const circumference = 2 * Math.PI * 18;
+    const offset = circumference * (1 - pct / 100);
+    
+    dayCards += `
+      <div class="day-card ${prog.completed ? 'completed' : ''}" onclick="openDay(${d.day})">
+        <div class="day-info">
+          <div class="day-num">Day ${d.day}</div>
+          <div class="day-topic">${d.topic} ${prog.completed ? '✅' : ''}</div>
+        </div>
+        <div class="day-progress">
+          <svg viewBox="0 0 44 44">
+            <circle class="bg" cx="22" cy="22" r="18"/>
+            <circle class="fg" cx="22" cy="22" r="18" 
+              stroke-dasharray="${circumference}" 
+              stroke-dashoffset="${offset}"/>
+          </svg>
+          <span>${pct}%</span>
+        </div>
+      </div>`;
+  }
+  
+  return `
+    <div class="streak-banner">
+      <div class="streak-fire">🔥</div>
+      <div class="streak-count">${state.streak} 天</div>
+      <div class="streak-label">连续打卡 · ${isCheckedIn ? '今日已打卡 ✅' : '今日未打卡'}</div>
+    </div>
+    
+    <div class="exp-bar">
+      <div class="exp-level">Lv.${state.level}</div>
+      <div class="exp-track"><div class="exp-fill" style="width:${expPct}%"></div></div>
+      <div class="exp-text">${state.exp} / ${expNeeded} XP</div>
+    </div>
+    
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">${state.totalPracticed}</div>
+        <div class="stat-label">已练习</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--green)">${accuracy}%</div>
+        <div class="stat-label">正确率</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--accent2)">${state.wrongBook.length}</div>
+        <div class="stat-label">错题</div>
+      </div>
+    </div>
+    
+    <div class="calendar-title">📅 打卡日历（近35天）</div>
+    <div class="calendar-grid">${calHTML}</div>
+    
+    <div class="calendar-title">📚 课程列表</div>
+    <div class="day-list">${dayCards}</div>
+  `;
+}
+
+// ============================================================
+// PRACTICE PAGE
+// ============================================================
+function openDay(dayNum) {
+  currentDay = dayNum;
+  currentSection = 'basic';
+  render();
+  window.scrollTo(0, 0);
+}
+
+function closeDay() {
+  currentDay = null;
+  render();
+  window.scrollTo(0, 0);
+}
+
+function setSection(sec) {
+  currentSection = sec;
+  render();
+}
+
+function renderPractice() {
+  const dayData = DAYS_DATA.find(d => d.day === currentDay);
+  if (!dayData) return '';
+  
+  const sentences = currentSection === 'basic' ? dayData.basic : dayData.advanced;
+  const prog = state.dayProgress[currentDay] || { correct: [], wrong: [], completed: false };
+  const offset = currentSection === 'advanced' ? 5 : 0;
+  
+  const totalDone = (prog.correct || []).length;
+  const pct = Math.round((totalDone / 10) * 100);
+  
+  let cards = '';
+  sentences.forEach((s, i) => {
+    const globalIdx = offset + i;
+    const isCorrect = (prog.correct || []).includes(globalIdx);
+    const isWrong = (prog.wrong || []).includes(globalIdx);
+    const statusClass = isCorrect ? 'correct' : isWrong ? 'wrong' : '';
+    const isFavorited = (state.favorites || []).some(f => f.day === currentDay && f.index === globalIdx);
+    
+    cards += `
+      <div class="sentence-card ${statusClass}" id="card-${globalIdx}">
+        <div class="sentence-number">${i + 1}</div>
+        <div class="sentence-en" id="sen-en-${globalIdx}">${s.en}</div>
+        <div class="sentence-cn">${s.cn}</div>
+        <div class="sentence-actions">
+          <button class="action-btn listen" onclick="listenSentence('${escapeJS(s.en)}', this)" title="听美音朗读">
+            🔊 听读音
+          </button>
+          <button class="action-btn listen" onclick="listenSlow('${escapeJS(s.en)}', this)" title="慢速播放">
+            🐢 慢速
+          </button>
+          <button class="action-btn record" id="rec-${globalIdx}" 
+            onclick="toggleRecord(${globalIdx}, '${escapeJS(s.en)}', '${escapeJS(s.cn)}')" title="录音跟读">
+            🎤 跟读
+          </button>
+          <button class="action-btn" onclick="toggleFavorite(${currentDay}, ${globalIdx}, '${escapeJS(s.en)}', '${escapeJS(s.cn)}')" title="${isFavorited ? '取消收藏' : '收藏'}">
+            ${isFavorited ? '⭐' : '☆'} 收藏
+          </button>
+          ${isCorrect ? '<span class="action-btn correct-mark">✅ 已掌握</span>' : ''}
+          ${i < sentences.length - 1 ? `<button class="action-btn" onclick="scrollToNext(${globalIdx + 1})" title="跳到下一句">下一句 ➜</button>` : ''}
+        </div>
+        <div class="recog-result" id="result-${globalIdx}"></div>
+      </div>`;
+  });
+  
+  return `
+    <button class="back-btn" onclick="closeDay()">← 返回课程列表</button>
+    
+    <div class="practice-header">
+      <div class="practice-day-title">DAY ${currentDay}</div>
+      <div class="practice-topic">${dayData.topic}</div>
+    </div>
+    
+    <div class="progress-bar-wrap">
+      <div style="font-size:13px;color:var(--text-dim)">完成度</div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <div class="progress-text">${totalDone}/10</div>
+    </div>
+    
+    <div class="progress-bar-wrap" style="margin-bottom:16px;">
+      <div style="font-size:13px;color:var(--text-dim);margin-bottom:8px;">
+        🔊 语速调节: <span id="speed-value">${(state.speechRate || 0.85).toFixed(2)}x</span>
+      </div>
+      <input type="range" min="0.6" max="1.2" step="0.05" value="${state.speechRate || 0.85}" 
+        oninput="updateSpeechRate(this.value)" 
+        style="width:100%;height:6px;border-radius:3px;background:var(--border);outline:none;appearance:none;cursor:pointer;">
+    </div>
+    
+    <div class="section-toggle">
+      <button class="section-btn ${currentSection==='basic'?'active':''}" onclick="setSection('basic')">⭐ 基础5句</button>
+      <button class="section-btn ${currentSection==='advanced'?'active':''}" onclick="setSection('advanced')">🚀 提升5句</button>
+    </div>
+    
+    ${cards}
+  `;
+}
+
+function escapeJS(str) {
+  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+}
+
+// ============================================================
+// LISTEN
+// ============================================================
+function listenSentence(text, btn) {
+  btn.classList.add('speaking');
+  speakUS(text, () => btn.classList.remove('speaking'));
+}
+
+function listenSlow(text, btn) {
+  speechSynth.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.55;
+  utterance.pitch = 1.0;
+  const voices = speechSynth.getVoices();
+  const usVoice = voices.find(v => v.lang === 'en-US') || voices.find(v => v.lang.startsWith('en'));
+  if (usVoice) utterance.voice = usVoice;
+  btn.classList.add('speaking');
+  utterance.onend = () => btn.classList.remove('speaking');
+  speechSynth.speak(utterance);
+}
+
+// ============================================================
+// RECORDING
+// ============================================================
+async function toggleRecord(idx, targetEn, targetCn) {
+  if (!recognition) {
+    recognition = setupRecognition();
+  }
+  
+  if (!recognition) {
+    showTooltip('⚠️ 你的浏览器不支持语音识别\n\n推荐使用：\n📱 手机：Safari (iOS) 或 Chrome (Android)\n💻 电脑：Chrome 或 Edge');
+    return;
+  }
+  
+  const btn = document.getElementById(`rec-${idx}`);
+  
+  if (isRecording && currentRecordingIdx === idx) {
+    // Stop
+    recognition.stop();
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+    return;
+  }
+  
+  // Stop any previous
+  if (isRecording) {
+    recognition.stop();
+    const prevBtn = document.getElementById(`rec-${currentRecordingIdx}`);
+    if (prevBtn) {
+      prevBtn.classList.remove('recording');
+      prevBtn.innerHTML = '🎤 跟读';
+    }
+  }
+  
+  currentRecordingIdx = idx;
+  isRecording = true;
+  btn.classList.add('recording');
+  btn.innerHTML = '⏹ 录音中...';
+  
+  // Track if recognition actually started
+  let recognitionStarted = false;
+  
+  recognition.onstart = () => {
+    recognitionStarted = true;
+    console.log('Recognition started (onstart event)');
+  };
+  
+  recognition.onresult = (event) => {
+    const spoken = event.results[0][0].transcript;
+    processResult(idx, targetEn, targetCn, spoken);
+  };
+  
+  recognition.onerror = (event) => {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+    
+    console.log('Recognition error:', event.error);
+    
+    if (event.error === 'no-speech') {
+      showTooltip('🎙️ 没有检测到语音，请再试一次');
+    } else if (event.error === 'not-allowed' || event.error === 'permission-denied') {
+      showTooltip('❌ 需要麦克风权限\n\n请在浏览器设置中允许使用麦克风\n\n📱 iOS: 设置→Safari→网站→麦克风\n📱 Android: 设置→网站设置→麦克风');
+    } else if (event.error === 'aborted') {
+      showTooltip('⏹️ 录音已取消');
+    } else if (event.error === 'network') {
+      showTooltip('⚠️ 网络错误，请检查网络连接');
+    } else {
+      showTooltip('⚠️ 录音出错: ' + event.error + '\n\n请刷新页面重试');
+    }
+  };
+  
+  recognition.onend = () => {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+    
+    // If recognition ended without getting any results, it might be a permission issue
+    console.log('Recognition ended');
+  };
+  
+  try {
+    console.log('Attempting to start recognition...');
+    recognition.start();
+    
+    // Set a timeout to check if recognition actually started (important for mobile)
+    setTimeout(() => {
+      if (recognitionStarted) {
+        // Recognition started successfully
+        console.log('Recognition confirmed started');
+      } else if (isRecording) {
+        // Recognition didn't start but we're still in "recording" state
+        console.warn('Recognition failed to start - resetting state');
+        isRecording = false;
+        btn.classList.remove('recording');
+        btn.innerHTML = '🎤 跟读';
+        showTooltip('⚠️ 录音未能启动\n\n可能原因：\n1. 权限弹窗打断了录音\n2. 请再次点击"🎤 跟读"重试\n3. 如果仍然失败，请刷新页面');
+      }
+    }, 1000); // Wait 1 second for onstart event
+    
+  } catch(e) {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+    console.error('Failed to start recognition:', e);
+    showTooltip('⚠️ 启动录音失败\n\n' + e.message + '\n\n请再次点击尝试');
+  }
+}
+
+function processResult(idx, targetEn, targetCn, spoken) {
+  const comparison = compareWords(targetEn, spoken);
+  const resultEl = document.getElementById(`result-${idx}`);
+  const card = document.getElementById(`card-${idx}`);
+  
+  // Build word-by-word display with click-to-listen for wrong words
+  let wordHTML = comparison.results.map(r => {
+    if (r.correct) {
+      return `<span class="word-correct">${r.word}</span>`;
+    } else {
+      return `<span class="word-wrong" onclick="speakWord('${escapeJS(r.word)}')" style="cursor:pointer;position:relative;" title="点击听正确发音">${r.word}<span style="font-size:10px;margin-left:2px;">🔊</span></span>`;
+    }
+  }).join(' ');
+  
+  const isGood = comparison.score >= 70;
+  
+  // Count wrong words for feedback
+  const wrongWords = comparison.results.filter(r => !r.correct);
+  const wrongWordsList = wrongWords.length > 0 
+    ? `<div style="margin-top:8px;padding:8px;background:rgba(255,82,82,0.1);border-radius:8px;font-size:13px;">
+         <strong>❌ 需要注意的词：</strong><br>
+         ${wrongWords.map(w => `<span class="word-wrong" onclick="speakWord('${escapeJS(w.word)}')" style="cursor:pointer;padding:2px 6px;margin:2px;display:inline-block;">${w.word} 🔊</span>`).join(' ')}
+         <div style="font-size:11px;color:var(--text-dim);margin-top:4px;">💡 点击单词可单独听发音</div>
+       </div>` 
+    : '';
+  
+  resultEl.className = `recog-result show ${isGood ? 'good' : 'bad'}`;
+  resultEl.innerHTML = `
+    <div class="recog-text">
+      <strong>你说的：</strong>${spoken}<br>
+      <strong>对比：</strong>${wordHTML}
+    </div>
+    <div class="recog-score ${isGood ? 'word-correct' : 'word-wrong'}">
+      ${isGood ? '🎉' : '💪'} 匹配度: ${comparison.score}%
+      ${isGood ? ' - 太棒了!' : ' - 再练练!'}
+    </div>
+    ${wrongWordsList}
+  `;
+  
+  // Auto scroll to next if score >= 80%
+  if (comparison.score >= 80) {
+    setTimeout(() => {
+      const nextIdx = idx + 1;
+      const nextCard = document.getElementById(`card-${nextIdx}`);
+      if (nextCard) {
+        nextCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 1500);
+  }
+  
+  // Update state
+  if (!state.dayProgress[currentDay]) {
+    state.dayProgress[currentDay] = { correct: [], wrong: [], completed: false };
+  }
+  const prog = state.dayProgress[currentDay];
+  
+  state.totalPracticed++;
+  
+  if (isGood) {
+    if (!prog.correct.includes(idx)) {
+      prog.correct.push(idx);
+      state.totalCorrect++;
+      addExp(10);
+    }
+    // Remove from wrong if was there
+    prog.wrong = prog.wrong.filter(w => w !== idx);
+    card.className = 'sentence-card correct';
+    
+    // Remove from wrong book
+    state.wrongBook = state.wrongBook.filter(w => 
+      !(w.day === currentDay && w.index === idx)
+    );
+    
+    // Check day completion
+    if (prog.correct.length >= 10 && !prog.completed) {
+      prog.completed = true;
+      checkStreak();
+      addExp(50);
+      setTimeout(() => showComplete(prog), 500);
+    }
+  } else {
+    if (!prog.wrong.includes(idx)) {
+      prog.wrong.push(idx);
+    }
+    card.className = 'sentence-card wrong';
+    
+    // Add to wrong book
+    const existing = state.wrongBook.find(w => w.day === currentDay && w.index === idx);
+    if (existing) {
+      existing.attempts = (existing.attempts || 0) + 1;
+    } else {
+      state.wrongBook.push({
+        day: currentDay,
+        section: idx >= 5 ? 'advanced' : 'basic',
+        index: idx,
+        en: targetEn,
+        cn: targetCn,
+        attempts: 1
+      });
+    }
+  }
+  
+  saveState();
+}
+
+function showComplete(prog) {
+  const correct = prog.correct.length;
+  const total = 10;
+  const accuracy = Math.round((correct / total) * 100);
+  
+  document.getElementById('completeCorrect').textContent = correct;
+  document.getElementById('completeTotal').textContent = total;
+  document.getElementById('completeAccuracy').textContent = accuracy + '%';
+  
+  const msgs = [
+    '你是语言天才！',
+    '坚持就是胜利！',
+    '口语越来越棒了！',
+    '美音发音太标准了！',
+    '继续保持这个势头！'
+  ];
+  document.getElementById('completeSub').textContent = msgs[Math.floor(Math.random() * msgs.length)];
+  
+  document.getElementById('completeOverlay').classList.add('show');
+  launchConfetti();
+}
+
+function closeComplete() {
+  document.getElementById('completeOverlay').classList.remove('show');
+  closeDay();
+}
+
+function reviewWrong() {
+  document.getElementById('completeOverlay').classList.remove('show');
+  currentDay = null;
+  showPage('wrong');
+}
+
+// ============================================================
+// WRONG BOOK
+// ============================================================
+function renderWrongBook() {
+  if (state.wrongBook.length === 0) {
+    return `
+      <div class="wrong-empty">
+        <div class="wrong-empty-icon">🏆</div>
+        <div class="wrong-empty-text">太棒了，暂无错题！<br>继续保持完美表现吧</div>
+      </div>`;
+  }
+  
+  let cards = '';
+  state.wrongBook.forEach((w, i) => {
+    cards += `
+      <div class="sentence-card" id="wrong-card-${i}">
+        <div class="sentence-number" style="background:linear-gradient(135deg, var(--red), var(--accent2))">
+          ${w.attempts || 1}
+        </div>
+        <div style="font-size:11px;color:var(--text-dim);margin-bottom:4px">Day ${w.day} · ${w.section === 'advanced' ? '提升' : '基础'} · 错误${w.attempts || 1}次</div>
+        <div class="sentence-en">${w.en}</div>
+        <div class="sentence-cn">${w.cn}</div>
+        <div class="sentence-actions">
+          <button class="action-btn listen" onclick="listenSentence('${escapeJS(w.en)}', this)">🔊 听读音</button>
+          <button class="action-btn listen" onclick="listenSlow('${escapeJS(w.en)}', this)">🐢 慢速</button>
+          <button class="action-btn record" id="wrong-rec-${i}" 
+            onclick="wrongRecord(${i})" title="录音跟读">🎤 跟读</button>
+          <button class="action-btn" onclick="removeWrong(${i})" style="color:var(--green)">✅ 已掌握</button>
+        </div>
+        <div class="recog-result" id="wrong-result-${i}"></div>
+      </div>`;
+  });
+  
+  return `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h2 style="font-size:20px">📖 错题本 <span style="color:var(--text-dim);font-size:14px">(${state.wrongBook.length}题)</span></h2>
+      <button class="action-btn" onclick="clearAllWrong()" style="color:var(--red)">🗑 清空</button>
+    </div>
+    ${cards}`;
+}
+
+async function wrongRecord(wrongIdx) {
+  if (!recognition) recognition = setupRecognition();
+  if (!recognition) {
+    showTooltip('⚠️ 浏览器不支持语音识别\n\n推荐使用：\n📱 手机：Safari (iOS) 或 Chrome (Android)\n💻 电脑：Chrome 或 Edge');
+    return;
+  }
+  
+  const w = state.wrongBook[wrongIdx];
+  if (!w) return;
+  
+  const btn = document.getElementById(`wrong-rec-${wrongIdx}`);
+  
+  if (isRecording) {
+    recognition.stop();
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+    return;
+  }
+  
+  isRecording = true;
+  btn.classList.add('recording');
+  btn.innerHTML = '⏹ 录音中...';
+  
+  recognition.onresult = (event) => {
+    const spoken = event.results[0][0].transcript;
+    const comparison = compareWords(w.en, spoken);
+    const resultEl = document.getElementById(`wrong-result-${wrongIdx}`);
+    
+    let wordHTML = comparison.results.map(r => 
+      `<span class="${r.correct ? 'word-correct' : 'word-wrong'}">${r.word}</span>`
+    ).join(' ');
+    
+    const isGood = comparison.score >= 70;
+    resultEl.className = `recog-result show ${isGood ? 'good' : 'bad'}`;
+    resultEl.innerHTML = `
+      <div class="recog-text"><strong>你说的：</strong>${spoken}<br><strong>对比：</strong>${wordHTML}</div>
+      <div class="recog-score ${isGood ? 'word-correct' : 'word-wrong'}">
+        ${isGood ? '🎉' : '💪'} 匹配度: ${comparison.score}% ${isGood ? '- 太棒了!' : '- 再练练!'}
+      </div>`;
+    
+    if (isGood) {
+      addExp(15);
+      showTooltip('🌟 错题攻克成功! +15XP');
+      // Remove from wrong book after delay
+      setTimeout(() => {
+        state.wrongBook.splice(wrongIdx, 1);
+        saveState();
+        render();
+      }, 2000);
+    }
+  };
+  
+  recognition.onerror = () => {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+  };
+  
+  recognition.onend = () => {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+  };
+  
+  try { recognition.start(); } catch(e) {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 跟读';
+  }
+}
+
+function removeWrong(idx) {
+  state.wrongBook.splice(idx, 1);
+  addExp(5);
+  saveState();
+  showTooltip('✅ 已标记为掌握');
+  render();
+}
+
+function clearAllWrong() {
+  if (confirm('确定清空所有错题吗？')) {
+    state.wrongBook = [];
+    saveState();
+    render();
+    showTooltip('🗑 错题本已清空');
+  }
+}
+
+// ============================================================
+// SPEED CHALLENGE
+// ============================================================
+let speedMode = null; // 'random', 'sequential'
+let speedSentences = [];
+let speedIdx = 0;
+let speedCorrect = 0;
+let speedTimer = null;
+let speedTime = 0;
+let speedActive = false;
+
+function renderSpeed() {
+  if (!speedActive) {
+    return `
+      <div style="text-align:center;margin-bottom:24px">
+        <div style="font-size:48px;margin-bottom:8px">⚡</div>
+        <h2 style="font-size:24px;font-weight:900;margin-bottom:4px">闪电挑战</h2>
+        <p style="color:var(--text-dim)">限时连续跟读，看你能闯多少关！</p>
+      </div>
+      
+      ${state.speedBest > 0 ? `<div class="stat-card" style="text-align:center;margin-bottom:20px">
+        <div class="stat-value" style="color:var(--accent)">${state.speedBest}</div>
+        <div class="stat-label">最佳纪录</div>
+      </div>` : ''}
+      
+      <div class="speed-mode-select">
+        <div class="speed-option" onclick="startSpeed('random')">
+          <div class="speed-option-icon">🎲</div>
+          <div>
+            <div class="speed-option-title">随机挑战</div>
+            <div class="speed-option-desc">从全部350句中随机抽取，每次不重复</div>
+          </div>
+        </div>
+        <div class="speed-option" onclick="startSpeed('wrong')">
+          <div class="speed-option-icon">📖</div>
+          <div>
+            <div class="speed-option-title">错题闪电战</div>
+            <div class="speed-option-desc">专攻错题本中的句子 (${state.wrongBook.length}题)</div>
+          </div>
+        </div>
+        <div class="speed-option" onclick="startSpeed('basic')">
+          <div class="speed-option-icon">⭐</div>
+          <div>
+            <div class="speed-option-title">基础冲刺</div>
+            <div class="speed-option-desc">只挑战基础句，打好根基</div>
+          </div>
+        </div>
+      </div>`;
+  }
+  
+  if (speedIdx >= speedSentences.length) {
+    // Finished
+    speedActive = false;
+    clearInterval(speedTimer);
+    const score = speedCorrect;
+    if (score > state.speedBest) {
+      state.speedBest = score;
+      saveState();
+    }
+    addExp(score * 5);
+    
+    return `
+      <div style="text-align:center;padding:40px 0">
+        <div style="font-size:72px;margin-bottom:16px">🏆</div>
+        <div style="font-size:28px;font-weight:900;margin-bottom:8px">挑战结束！</div>
+        <div class="speed-stats" style="margin:24px 0">
+          <div class="speed-stat">
+            <div class="speed-stat-val" style="color:var(--green)">${speedCorrect}</div>
+            <div class="speed-stat-lbl">正确</div>
+          </div>
+          <div class="speed-stat">
+            <div class="speed-stat-val" style="color:var(--accent)">${speedSentences.length}</div>
+            <div class="speed-stat-lbl">总题</div>
+          </div>
+          <div class="speed-stat">
+            <div class="speed-stat-val" style="color:var(--accent2)">${speedTime}s</div>
+            <div class="speed-stat-lbl">用时</div>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="speedActive=false;render()">再来一局</button>
+        <button class="btn-secondary" onclick="speedActive=false;showPage('home')">返回首页</button>
+      </div>`;
+  }
+  
+  const s = speedSentences[speedIdx];
+  
+  return `
+    <div class="speed-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <span style="color:var(--text-dim);font-size:13px;font-weight:700">${speedIdx+1} / ${speedSentences.length}</span>
+        <div class="speed-timer" id="speedTimerDisplay">${speedTime}s</div>
+        <button class="action-btn" onclick="stopSpeed()" style="color:var(--red)">✕ 结束</button>
+      </div>
+      <div class="speed-sentence">${s.en}</div>
+      <div class="speed-cn">${s.cn}</div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+        <button class="action-btn listen" onclick="listenSentence('${escapeJS(s.en)}', this)">🔊 听一遍</button>
+        <button class="action-btn record" id="speed-rec" onclick="speedRecord()">🎤 开始跟读</button>
+        <button class="action-btn" onclick="speedSkip()" style="color:var(--accent)">⏭ 跳过</button>
+      </div>
+      <div class="recog-result" id="speed-result"></div>
+    </div>
+    <div class="speed-stats">
+      <div class="speed-stat">
+        <div class="speed-stat-val" style="color:var(--green)">${speedCorrect}</div>
+        <div class="speed-stat-lbl">正确</div>
+      </div>
+      <div class="speed-stat">
+        <div class="speed-stat-val" style="color:var(--accent2)">${speedIdx}</div>
+        <div class="speed-stat-lbl">已答</div>
+      </div>
+    </div>`;
+}
+
+function startSpeed(mode) {
+  speedSentences = [];
+  speedIdx = 0;
+  speedCorrect = 0;
+  speedTime = 0;
+  speedActive = true;
+  
+  if (mode === 'wrong') {
+    if (state.wrongBook.length === 0) {
+      showTooltip('📖 错题本为空，先去练习吧');
+      return;
+    }
+    speedSentences = state.wrongBook.map(w => ({ en: w.en, cn: w.cn }));
+  } else if (mode === 'basic') {
+    DAYS_DATA.forEach(d => d.basic.forEach(s => speedSentences.push(s)));
+  } else {
+    DAYS_DATA.forEach(d => {
+      d.basic.forEach(s => speedSentences.push(s));
+      d.advanced.forEach(s => speedSentences.push(s));
+    });
+  }
+  
+  // Shuffle
+  for (let i = speedSentences.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [speedSentences[i], speedSentences[j]] = [speedSentences[j], speedSentences[i]];
+  }
+  
+  // Limit to 20
+  speedSentences = speedSentences.slice(0, 20);
+  
+  speedTimer = setInterval(() => {
+    speedTime++;
+    const el = document.getElementById('speedTimerDisplay');
+    if (el) el.textContent = speedTime + 's';
+  }, 1000);
+  
+  render();
+}
+
+function stopSpeed() {
+  speedIdx = speedSentences.length;
+  render();
+}
+
+function speedSkip() {
+  speedIdx++;
+  render();
+}
+
+async function speedRecord() {
+  if (!recognition) recognition = setupRecognition();
+  if (!recognition) {
+    showTooltip('⚠️ 浏览器不支持语音识别\n\n推荐使用：\n📱 手机：Safari (iOS) 或 Chrome (Android)\n💻 电脑：Chrome 或 Edge');
+    return;
+  }
+  
+  const btn = document.getElementById('speed-rec');
+  if (isRecording) {
+    recognition.stop();
+    return;
+  }
+  
+  isRecording = true;
+  btn.classList.add('recording');
+  btn.innerHTML = '⏹ 录音中...';
+  
+  const s = speedSentences[speedIdx];
+  
+  recognition.onresult = (event) => {
+    const spoken = event.results[0][0].transcript;
+    const comparison = compareWords(s.en, spoken);
+    const resultEl = document.getElementById('speed-result');
+    const isGood = comparison.score >= 70;
+    
+    let wordHTML = comparison.results.map(r => 
+      `<span class="${r.correct ? 'word-correct' : 'word-wrong'}">${r.word}</span>`
+    ).join(' ');
+    
+    resultEl.className = `recog-result show ${isGood ? 'good' : 'bad'}`;
+    resultEl.innerHTML = `
+      <div class="recog-text"><strong>你说的：</strong>${spoken}<br><strong>对比：</strong>${wordHTML}</div>
+      <div class="recog-score ${isGood ? 'word-correct' : 'word-wrong'}">
+        ${isGood ? '🎉' : '💪'} 匹配度: ${comparison.score}%
+      </div>`;
+    
+    if (isGood) speedCorrect++;
+    
+    setTimeout(() => {
+      speedIdx++;
+      render();
+    }, 1500);
+  };
+  
+  recognition.onerror = () => {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 开始跟读';
+    showTooltip('🎙️ 没有检测到语音');
+  };
+  
+  recognition.onend = () => {
+    isRecording = false;
+    if (btn) {
+      btn.classList.remove('recording');
+      btn.innerHTML = '🎤 开始跟读';
+    }
+  };
+  
+  try { recognition.start(); } catch(e) {
+    isRecording = false;
+    btn.classList.remove('recording');
+    btn.innerHTML = '🎤 开始跟读';
+  }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+// NEW FEATURES
+// ============================================================
+
+// Speech rate control
+function updateSpeechRate(rate) {
+  state.speechRate = parseFloat(rate);
+  const el = document.getElementById('speed-value');
+  if (el) el.textContent = rate + 'x';
+  saveState();
+}
+
+// Favorite management
+function toggleFavorite(day, index, en, cn) {
+  if (!state.favorites) state.favorites = [];
+  const existingIdx = state.favorites.findIndex(f => f.day === day && f.index === index);
+  if (existingIdx >= 0) {
+    state.favorites.splice(existingIdx, 1);
+    showTooltip('已取消收藏');
+  } else {
+    state.favorites.push({ day, index, en, cn, timestamp: Date.now() });
+    showTooltip('⭐ 已收藏到金句本');
+  }
+  saveState();
+  render();
+}
+
+// Scroll to next sentence
+function scrollToNext(nextIdx) {
+  const nextCard = document.getElementById(`card-${nextIdx}`);
+  if (nextCard) {
+    nextCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => {
+      const recBtn = document.getElementById(`rec-${nextIdx}`);
+      if (recBtn) {
+        recBtn.style.animation = 'recordPulse 0.5s 2';
+        setTimeout(() => recBtn.style.animation = '', 1000);
+      }
+    }, 500);
+  }
+}
+
+// Speak individual word
+function speakWord(word) {
+  speechSynth.cancel();
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.8;
+  utterance.pitch = 1.0;
+  const voices = speechSynth.getVoices();
+  const usVoice = voices.find(v => v.lang === 'en-US') || voices.find(v => v.lang.startsWith('en'));
+  if (usVoice) utterance.voice = usVoice;
+  speechSynth.speak(utterance);
+}
+
+// Render favorites page
+function renderFavorites() {
+  if (!state.favorites) state.favorites = [];
+  if (state.favorites.length === 0) {
+    return `
+      <div style="text-align:center;padding:80px 20px;color:var(--text-dim);">
+        <div style="font-size:64px;margin-bottom:16px;">⭐</div>
+        <div style="font-size:18px;font-weight:700;margin-bottom:8px;">收藏本是空的</div>
+        <div style="font-size:14px;">遇到喜欢的句子，点击"收藏"按钮添加到这里</div>
+      </div>
+    `;
+  }
+
+  let cards = '';
+  state.favorites.slice().reverse().forEach((fav, i) => {
+    const realIdx = state.favorites.length - 1 - i;
+    cards += `
+      <div class="sentence-card" style="margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div class="sentence-number" style="display:inline-flex;">Day ${fav.day}</div>
+          <button class="action-btn" onclick="removeFavorite(${realIdx})" style="padding:4px 12px;font-size:12px;">
+            🗑️ 移除
+          </button>
+        </div>
+        <div class="sentence-en">${fav.en}</div>
+        <div class="sentence-cn">${fav.cn}</div>
+        <div class="sentence-actions">
+          <button class="action-btn listen" onclick="listenSentence('${escapeJS(fav.en)}', this)">
+            🔊 听读音
+          </button>
+          <button class="action-btn listen" onclick="listenSlow('${escapeJS(fav.en)}', this)">
+            🐢 慢速
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  return `
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="font-size:22px;font-weight:900;margin-bottom:4px;">⭐ 我的收藏</div>
+      <div style="font-size:13px;color:var(--text-dim);">共 ${state.favorites.length} 个金句</div>
+    </div>
+    ${cards}
+  `;
+}
+
+function removeFavorite(index) {
+  if (!state.favorites) state.favorites = [];
+  state.favorites.splice(index, 1);
+  saveState();
+  render();
+  showTooltip('已移除');
+}
+
+// Render settings page
+function renderSettings() {
+  const totalSentences = DAYS_DATA.reduce((sum, d) => sum + 10, 0);
+  const masteredCount = Object.values(state.dayProgress).reduce((sum, p) => sum + (p.correct || []).length, 0);
+  
+  return `
+    <div style="text-align:center;margin-bottom:32px;">
+      <div style="font-size:22px;font-weight:900;margin-bottom:4px;">⚙️ 设置</div>
+    </div>
+    
+    <div class="sentence-card" style="margin-bottom:16px;">
+      <div style="font-size:16px;font-weight:700;margin-bottom:12px;">📊 学习统计</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <div style="text-align:center;padding:16px;background:var(--glass);border-radius:12px;">
+          <div style="font-size:28px;font-weight:900;color:var(--green);">${masteredCount}</div>
+          <div style="font-size:12px;color:var(--text-dim);">已掌握句子</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:var(--glass);border-radius:12px;">
+          <div style="font-size:28px;font-weight:900;color:var(--accent3);">${totalSentences}</div>
+          <div style="font-size:12px;color:var(--text-dim);">总句子数</div>
+        </div>
+      </div>
+      <div style="padding:12px;background:var(--glass);border-radius:12px;text-align:center;">
+        <div style="font-size:18px;font-weight:700;color:var(--accent);">${Math.round(masteredCount/totalSentences*100)}%</div>
+        <div style="font-size:12px;color:var(--text-dim);">总体掌握率</div>
+      </div>
+    </div>
+    
+    <div class="sentence-card" style="margin-bottom:16px;">
+      <div style="font-size:16px;font-weight:700;margin-bottom:12px;">🔊 语速设置</div>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:13px;color:var(--text-dim);margin-bottom:8px;">
+          当前语速: <span style="color:var(--accent);font-weight:700;">${(state.speechRate || 0.85).toFixed(2)}x</span>
+        </div>
+        <input type="range" min="0.6" max="1.2" step="0.05" value="${state.speechRate || 0.85}" 
+          oninput="updateSpeechRateSettings(this.value)" 
+          style="width:100%;height:8px;border-radius:4px;background:var(--border);outline:none;appearance:none;cursor:pointer;">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);margin-top:4px;">
+          <span>0.6x 慢速</span>
+          <span>0.85x 标准</span>
+          <span>1.2x 快速</span>
+        </div>
+      </div>
+      <button class="action-btn" onclick="testSpeechRate()" style="width:100%;justify-content:center;">
+        🎵 测试当前语速
+      </button>
+    </div>
+    
+    <div class="sentence-card" style="margin-bottom:16px;border-color:rgba(255,82,82,0.3);">
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px;color:var(--red);">⚠️ 危险区域</div>
+      <div style="font-size:13px;color:var(--text-dim);margin-bottom:12px;">
+        重置后将清空所有学习进度、打卡记录、错题本和收藏，此操作不可恢复！
+      </div>
+      <button class="action-btn" onclick="confirmReset()" 
+        style="width:100%;justify-content:center;border-color:var(--red);color:var(--red);">
+        🔄 重置所有数据
+      </button>
+    </div>
+    
+    <div style="text-align:center;padding:20px;color:var(--text-dim);font-size:12px;">
+      <div>🌟 每日英语口语打卡 · 美音特训营</div>
+      <div style="margin-top:4px;">Version 2.0 - 优化版</div>
+    </div>
+  `;
+}
+
+function updateSpeechRateSettings(rate) {
+  state.speechRate = parseFloat(rate);
+  saveState();
+  const displays = document.querySelectorAll('[style*="当前语速"]');
+  displays.forEach(el => {
+    const span = el.querySelector('span');
+    if (span) span.textContent = rate + 'x';
+  });
+}
+
+function testSpeechRate() {
+  speakUS("Hello! This is a test of the current speech rate. How does it sound?");
+  showTooltip('🎵 播放测试语音中...');
+}
+
+function confirmReset() {
+  if (confirm('⚠️ 确定要重置所有数据吗？\n\n这将清空：\n- 所有学习进度\n- 打卡记录\n- 错题本\n- 收藏本\n- 连续打卡天数\n- 等级和经验\n\n此操作不可恢复！')) {
+    if (confirm('⚠️ 最后确认：真的要删除所有数据吗？')) {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    }
+  }
+}
+
+// ============================================================
+render();
+
+// Ensure voices are loaded
+setTimeout(() => speechSynth.getVoices(), 100);
+</script>
+</body>
+</html>
